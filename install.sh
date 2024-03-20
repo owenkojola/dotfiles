@@ -41,9 +41,9 @@ alias nano='edit'
 alias snano='sedit'
 EOT
 
-cp ~/.bashrc ~/dotfiles/.bashrc
+cp ~/.bashrc /home/ubuntu/dotfiles/.bashrc
 
-ln -sf ~/dotfiles/.bashrc ~/.bashrc
+ln -sf /home/ubuntu/dotfiles/.bashrc ~/.bashrc
 
 echo "Aliases added to .bashrc, copied to git repository, and symbolic link created successfully."
 
@@ -51,15 +51,15 @@ if [ ! -d ~/.ssh ]; then
     mkdir -p ~/.ssh
 fi
 
-cp ~/.ssh/authorized_keys ~/dotfiles/authorized_keys
-ln -sf ~/dotfiles/authorized_keys ~/.ssh/authorized_keys
+cp ~/.ssh/authorized_keys /home/ubuntu/dotfiles/authorized_keys
+ln -sf /home/ubuntu/dotfiles/authorized_keys ~/.ssh/authorized_keys
 
 cat <<EOT > ~/.ssh/config
 Host fry.cs.wright.edu
     HostName fry.cs.wright.edu
     User W001owk
 EOT
-ln -sf ~/dotfiles/config ~/.ssh/config 
+ln -sf /home/ubuntu/dotfiles/config ~/.ssh/config 
 
 echo "SSH configuration completed successfully."
 
