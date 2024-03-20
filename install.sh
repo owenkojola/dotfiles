@@ -13,25 +13,21 @@ fi
 apt update
 apt install -y dnsutils nmap
 
-ANACONDA_URL="https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh"
+ANACONDA_URL="https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh"  # Fixed Anaconda URL
 TEMP_DIR=$(mktemp -d)
 cd "$TEMP_DIR" || exit
 curl -O "$ANACONDA_URL"
-bash "Anaconda3-latest-Linux-x86_64.sh" -b -p /opt/anaconda3
+bash "Anaconda3-2024.02-1-Linux-x86_64.sh" -b -p /opt/anaconda3  # Fixed Anaconda installation script name
 
 USER=$(ls -ld /home/* | awk '{print $3}' | head -n 1)
-
 chown -R "$USER":"$USER" /opt/anaconda3
 
 rm -rf "$TEMP_DIR"
 
 apt install -y bsdgames
-
 apt install -y awscli
 
 echo "Installation completed successfully."
-
-#!/bin/bash
 
 cat <<EOT >> ~/.bashrc
 alias cl="clear"
@@ -59,13 +55,13 @@ cp ~/.ssh/authorized_keys ~/dotfiles/authorized_keys
 ln -sf ~/dotfiles/authorized_keys ~/.ssh/authorized_keys
 
 cat <<EOT > ~/.ssh/config
-    Host fry.cs.wright.edu
+Host fry.cs.wright.edu
     HostName fry.cs.wright.edu
     User W001owk
 EOT
-ln -sf ~/.ssh/config ~/dotfiles//config
+ln -sf ~/dotfiles/config ~/.ssh/config 
 
-echo "Configuration completed successfully."
+echo "SSH configuration completed successfully."
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
@@ -94,4 +90,4 @@ call vundle#end()
 filetype plugin indent on
 EOT
 
-echo "Vundle installed"
+echo "Vundle installed and Vim configured."
